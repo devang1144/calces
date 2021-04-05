@@ -20,6 +20,9 @@ const passport = require('passport')
 //to parse json data
 const bodyParser = require('body-parser')
 
+//Cookiesession
+const cookieParser = require('cookie-parser'); 
+const cookieSession = require('cookie-session');
 
 //database libraries
 const mongoose = require('mongoose')
@@ -27,7 +30,7 @@ const mongoose = require('mongoose')
 //models
 
 //routes
-
+require('./routes/auth.js');
 
 //Port
 const PORT = 9000
@@ -59,6 +62,11 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
 
 //login system middleware
 app.use(passport.initialize())
@@ -132,7 +140,7 @@ app.get('/google/login',
 //callback route
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
   res.cookie("user",req.user._id)
-  res.redirect('/home')
+  res.redirect('/d')
 })
 
 app.get('/add-project/:file_name', (req,res) => {
@@ -156,7 +164,7 @@ app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' }
 //facebook callback route
 app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login' }), (req, res) => {
   res.cookie("user",req.user._id)
-  res.redirect('/home')
+  res.redirect('/d')
 })
 
 app.get('/blog/:slug', async(req, res) => {
@@ -179,6 +187,6 @@ app.use(function(req, res, next) {
 })
   
 app.listen(PORT, function() {
-      console.log('App running on port 6161')
+      console.log('App running on port 9000')
 }) 
    
