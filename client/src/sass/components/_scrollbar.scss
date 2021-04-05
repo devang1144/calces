@@ -1,0 +1,22 @@
+body {
+    overflow: overlay;
+  }
+  ::-webkit-scrollbar {
+      overflow-y: auto; 
+      width: 8px;
+      z-index: 1000;
+      height: 10px; 
+      background-color: rgb(211, 211, 211);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    overflow: overlay;
+      background:rgba(#a3a3a3, 1); 
+      border-radius: 2px;
+      border-radius: 1rem;
+  }
+    
+  ::-webkit-scrollbar-thumb:hover {
+    overflow: overlay;
+    background:rgba(#a3a3a3, 1); 
+  }

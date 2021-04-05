@@ -1,0 +1,58 @@
+//stats section above table component
+.stats-section {
+    font-family: 'Roboto';
+    color: #d5d5d5;
+    .fa {
+        color: rgb(26, 184, 168);
+    }
+}
+
+.table-component {
+    transition: all 0.3s;
+    font-family: 'Roboto';
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    tr {
+        &:hover {
+            cursor: default;
+            background-color: rgba(0, 31, 39, 0.5);
+        }
+    }
+    td {
+        border: 2px solid #1D2527 !important;
+        color: rgba(#d5d5d5, 0.86);
+        &:first-child {
+            border-right: none !important;
+        }
+        &:last-child {
+            border-left: none !important;
+        }
+    }
+
+    //removing default bootstrap styling for table
+    th {
+        background-color: rgba(6, 57, 68, 1);
+        color: #d5d5d5;
+        border-top: 0 !important;
+
+    }
+}
+
+
+.docs-table {
+    th {
+        &:first-child {
+            border-right: 0 !important;
+        }
+        &:last-child {
+            border-left: 0 !important;
+        }
+    }
+}
+
+
+@media (max-width:1260px) {
+    .table-wrapper {
+        width: 99%;
+        overflow-x: auto;
+    }
+}

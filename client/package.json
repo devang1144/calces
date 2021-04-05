@@ -1,0 +1,68 @@
+{
+  "name": "Calces",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "draft-convert": "^2.1.10",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
+    "font-awesome": "^4.7.0",
+    "framer-motion": "^4.1.2",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "polished": "^4.1.1",
+    "popper.js": "^1.16.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
+    "react-color": "^2.19.3",
+    "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
+    "react-hotkeys": "^2.0.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-scroll": "^1.8.2",
+    "recharts": "^2.0.9",
+    "rsuite": "^4.9.3",
+    "sass": "^1.32.8",
+    "scrollreveal": "^4.0.9",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.2.3",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "Calces-an online solver, The ultimate tool to help you out in your messy calculations, with everything you need in a streamlined web platform",
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
