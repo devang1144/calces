@@ -33,7 +33,7 @@ const mongoose = require('mongoose')
 require('./routes/auth.js');
 const ip = require('./routes/ip')
 const solver = require('./routes/gears')
-// const analytics = require('./routes/analytics')
+const faq = require('./routes/faq')
 const SAEDocs = require('./routes/saeDocs')
 
 //Port
@@ -81,6 +81,7 @@ app.use(passport.session())
 app.use('/upload-doc', SAEDocs)
 app.use('/record-ip', ip)
 app.use('/solve', solver)
+app.use('/faq', faq)
 // app.use('/api', analytics)
 
 //SES config

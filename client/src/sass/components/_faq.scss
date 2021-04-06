@@ -1,0 +1,96 @@
+.faq-container {
+    min-height: 200vh;
+    background-color: #001015;
+
+    hr {
+        width: 100%;
+        background-color: rgb(0, 50, 63);
+        height: 0.2px;
+    }
+}
+.search-faq {
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .faq-search {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(#d5d5d5, 0.6);
+        color: rgba(#d5d5d5, 1);
+        font-size: 40px;
+        text-align: center;
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid rgba(#d5d5d5, 1);
+        }
+    }
+
+    .fa-search, .fa-arrow-right {
+        position: absolute;
+        transition: all 0.3s ease;
+        right: 1rem;
+        top: 0.5rem !important;
+        // width: 18%;
+        background-color: #001015;
+        top: 1.3rem;
+        font-size: 40px;
+        color: rgba(#d5d5d5, 0.6);
+    }
+
+    input[type="text"]:focus + .fa-search, .fa-arrow-right {
+        color: rgba(#d5d5d5, 1);
+    }
+}
+.faq-banner {
+    height: 20rem;
+}
+
+.search-results {
+    position: absolute;
+    z-index: 0;
+    background-color: black;
+    width: 100%;
+    right:0;
+    border-radius: 0.5rem;
+    ul {
+        list-style: none;
+        padding: 0.6rem;
+        margin-bottom: 0 !important;
+        li {
+            border-radius: 0.4rem;
+            padding: 0.5rem;
+            &:hover {
+                background-color: rgb(27, 27, 27);
+            }
+            font-family: 'Roboto';
+            h3 {
+                color: #d5d5d5;
+                font-size: 25px;
+            }
+            h5 {
+                font-size: 17px;
+                color: rgba(#d5d5d5, 0.6);
+            }
+        }
+    }
+}
+
+.faq-section {
+    font-family: 'Roboto';
+    color: rgba(#d5d5d5, 0.8);
+    margin: 1.6rem 1.3rem;
+    hr {
+        width: 70%;
+        margin : 0 auto 1.4rem 0;
+        height: 0.1px;
+        background-color: rgb(0, 62, 75);
+    }
+    h3 {
+        font-size: 37px;
+    }
+    h4 {
+        font-size:20px;
+    }
+}
