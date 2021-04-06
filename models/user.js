@@ -12,12 +12,11 @@ const kind = new mongoose.Schema({
 const user = new mongoose.Schema({
     name : String,
     uid : String,
-    sessionId:String,
+    sessionId: String,
     calculation_Count : String,
     last_cal_elem : String,
     last_Calculation : [lastCalculation],
     kind:[kind]
-
 })
 
 module.exports = mongoose.model('user', user)
