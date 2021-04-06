@@ -199,6 +199,7 @@ class Docs extends Component {
                                 <i className="fa fa-copy" />
                             </button>
                         </Tooltip>
+                        <i  className="fa fa-times" onClick={() => this.setState({ docPreview : false })}/>
                     </div>
                     { docType != "txt" && <iframe style={{width:"100%", height:"100vh"}} src={base + docPath} frameborder="0"/>}
                 </div>

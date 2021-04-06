@@ -8,6 +8,7 @@ import './sass/main.scss'
 
 import Home from './components/Home'
 import Dash from './containers/Dash'
+import Admin from './admin/Admin'
 
 
 function App() {
@@ -24,6 +25,7 @@ useEffect(() => {
         <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/d" component={Dash} />
+            <Route path="/admin" component={Admin} />
         </Switch>
       </Router>
     </div>
