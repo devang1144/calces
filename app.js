@@ -31,6 +31,10 @@ const mongoose = require('mongoose')
 
 //routes
 require('./routes/auth.js');
+const ip = require('./routes/ip')
+const solver = require('./routes/gears')
+// const analytics = require('./routes/analytics')
+const SAEDocs = require('./routes/saeDocs')
 
 //Port
 const PORT = 9000
@@ -74,6 +78,10 @@ app.use(passport.session())
 // app.use(cookie())
 
 //middlewares
+app.use('/upload-doc', SAEDocs)
+app.use('/record-ip', ip)
+app.use('/solve', solver)
+// app.use('/api', analytics)
 
 //SES config
 AWS.config = new AWS.Config();
@@ -166,6 +174,8 @@ app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect
   res.cookie("user",req.user._id)
   res.redirect('/d')
 })
+
+
 
 app.get('/blog/:slug', async(req, res) => {
   const thisBlog = await Blog.findOne({slug : req.params.slug})

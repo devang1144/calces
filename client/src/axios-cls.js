@@ -4,7 +4,7 @@ const instance = axios.create({
 
     //base Domain name
     // baseUrl : "https://calces.org.in/",
-    baseUtl : "http://localhost:9000/"
+    baseURL : "http://localhost:9000/"
 
 })
 
