@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import Gears from '../components/gears'
 import Shaft from '../components/Shafts'
 import Docs from '../components/Docs'
@@ -49,6 +51,9 @@ class Dash extends Component {
     
     render() {
         const page = this.state.page
+        if(Cookies.get("user")==undefined){
+            return (<Redirect to="/"></Redirect>)
+        }
         return (
             <div style={{ backgroundColor:"#001015" }} className="row m-0">
                 <motion.div initial={{ left:-100 }} animate={{ left:0 }} transition={{ duration: 0.3 }} className="col-md-2 qwx-sae-left-side-panel p-0">
