@@ -3,6 +3,7 @@ import Input from '../common/Input'
 import Dropdown from '../common/dropdown'
 import Table from '../common/Table'
 import Tooltip from '@material-ui/core/Tooltip';
+import Snackbar from '@material-ui/core/Snackbar';
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import axios, {base} from '../axios-cls'
 import Chart from './Chart'
@@ -14,6 +15,11 @@ class Gears extends Component {
         dropdown : false,
         result : [],
         showForm : true,
+        analysisSaved : false,
+        snackBarPosition : {
+            vertical : "top",
+            horizontal : "center"
+        },
         data : {
             fwidth1:"0.6",
             fwidth2:"1",
@@ -192,7 +198,11 @@ class Gears extends Component {
     saveAnalysis = async() => {
         const payload = {...this.state.data}
         const {data : res} = await axios.post('/analysis/save/606b335cd229cc49f81a0196', payload)
-        console.log(res)
+        this.setState({ analysisSaved : true })
+    }
+
+    closeNotification = () => {
+        this.setState({ analysisSaved : false })
     }
 
     topRef = React.createRef()
@@ -200,6 +210,7 @@ class Gears extends Component {
 
     executeTopScroll = () => this.topRef.current.scrollIntoView()
     executeToEndScroll = () => this.toEndOfPage.current.scrollIntoView()
+    snackPosition = this.state.snackBarPosition
     render() {
 
         let val = this.state.defaultRadio
@@ -324,6 +335,16 @@ class Gears extends Component {
                         </div>
                         {this.state.result.length === 0 ? false : true && 
                             <div>
+                                <Snackbar 
+                                  open={this.state.analysisSaved} 
+                                  autoHideDuration={3000} 
+                                  anchorOrigin={{ vertical:this.snackPosition.vertical, horizontal:this.snackPosition.horizontal }}
+                                  key={this.snackPosition.vertical + this.snackPosition.horizontal}
+                                  onClose={this.closeNotification}>
+                                  <p onClose={this.handleClose} style={{ backgroundColor:"#FFF8BE", color:"#444", padding:"0.2rem", borderRadius:"0.1rem" }}>
+                                  Analysis saved !!
+                                  </p>
+                                 </Snackbar>
                                 <Tooltip title="back to top">
                                     <div onClick={this.executeTopScroll} className="back-to-top-button">
                                         <i className="d-flex justify-content-center align-items-center fa fa-angle-up"></i>

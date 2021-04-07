@@ -191,6 +191,15 @@ input::-webkit-inner-spin-button {
 .s-a {
     border: none;
 }
+.v-a {
+    font-family: 'Roboto';
+    color: #d5d5d5;
+    padding: 0.4rem 0.4rem 0.4rem 1rem;
+    &:hover {
+        background-color: black;
+        cursor: default;
+    }
+}
 .show-hide-btn, .s-a {
     border-radius: 0.3rem;
     margin-top: 1.3rem;

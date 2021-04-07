@@ -39,6 +39,11 @@ class Dash extends Component {
             name : "FAQ",
             icon : "question-circle",
             link : "/faq"
+        },
+        {
+            name : "View saved analysis",
+            icon : "save",
+            link : "/analysis/saved"
         }
     ]
     

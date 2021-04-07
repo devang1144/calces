@@ -14,6 +14,7 @@ import Faq from './components/Faq'
 
 import Navbar from './components/Navbar'
 import EachFaq from './containers/eachFaq';
+import Analysis from './components/Analysis'
 
 
 function App() {
@@ -33,6 +34,7 @@ useEffect(() => {
             <Route path="/admin" component={Admin} />
             <Route path="/faq" exact component={Faq} />
             <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />
+            <Route path="/analysis/saved" exact component={Analysis} />
         </Switch>
       </Router>
     </div>
