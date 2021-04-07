@@ -147,7 +147,7 @@ app.get('/google/login',
   passport.authenticate('google', { scope: ['profile', 'email'] }))
 
 //callback route
-app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
   res.cookie("user",req.user._id)
   res.redirect('/d')
 })
@@ -171,7 +171,7 @@ app.get('/download/docs/:name', (req, res) => {
 app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' } ))
 
 //facebook callback route
-app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login' }), (req, res) => {
+app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/' }), (req, res) => {
   res.cookie("user",req.user._id)
   res.redirect('/d')
 })

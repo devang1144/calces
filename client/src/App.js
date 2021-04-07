@@ -10,7 +10,7 @@ import Home from './components/Home'
 import Dash from './containers/Dash'
 import Admin from './admin/Admin'
 
-import Faq from './components/Faq'
+import Faq from './components/faq'
 
 import Navbar from './components/Navbar'
 import EachFaq from './containers/eachFaq';
