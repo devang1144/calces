@@ -9,7 +9,6 @@ import './sass/main.scss'
 import Home from './components/Home'
 import Dash from './containers/Dash'
 import Admin from './admin/Admin'
-import FAQ from './components/faq';
 
 import Faq from './components/Faq'
 
@@ -32,7 +31,6 @@ useEffect(() => {
         <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/d" component={Dash} />
-            <Route path="/faq" component={FAQ} />
             <Route path="/admin" component={Admin} />
             <Route path="/faq" exact component={Faq} />
             <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />
