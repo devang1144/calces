@@ -12,6 +12,8 @@ import faqBannerImg from '../assets/faq-banner-img.png'
 import FBI from '../assets/f-b-i.svg'
 import axios, {base} from '../axios-cls'
 
+import { Link as scrollLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 import {Link} from 'react-router-dom'
 
 class Faq extends Component {
@@ -22,6 +24,7 @@ class Faq extends Component {
         loadingFaq : false,
         expanded : "panel1",
         isExpanded : false,
+        showResult : true,
         searchRes : []
     }
 
@@ -63,7 +66,8 @@ class Faq extends Component {
         this.onSearch(e)
     }
     
-
+    inputRef = React.createRef()
+    
     render() {
         const {faq, q} = this.state
 
@@ -75,8 +79,8 @@ class Faq extends Component {
             </div>
             <div className="search-faq">
                 <div className="position-relative col-md-8">
-                    <input type="text" className="faq-search" placeholder="Search FAQ" onChange={this.handleChange} name="q" id="q" />
-                    {this.state.searchRes.length != 0 && 
+                    <input ref={this.inputRef} type="text" className="faq-search" placeholder="Search FAQ" onChange={this.handleChange} name="q" id="q" />
+                    { this.state.showResult && this.state.searchRes.length != 0 && 
                     <div className="search-results">
                         <ul>
                             {this.state.searchRes.map(m => 
@@ -95,14 +99,14 @@ class Faq extends Component {
             <div className="row m-0">
                 <div className="col-md-4 position-sticky sticky-top">
                     <ul className="faq-links position-sticky sticky-top">
-                        <li>What is calces ?</li>
-                        <li>How to save your analysis ?</li>
-                        <li>How to get saved analysis ?</li>
+                        <a href="#what-is-calces"><li>What is calces ?</li></a>
+                        <a href="#how-to-save-your-analysis"><li>How to save your analysis ?</li></a>
+                        <a href="#how-to-get-saved-analysis"><li>How to get saved analysis ?</li></a>
                     </ul>
                 </div>
                 <div className="col-md-8">
                     {faq.map(m => 
-                    <div className="faq-section">
+                    <div name={m.slug} id={m.slug} className="faq-section">
                         <Link to={"/faq/" + m.slug}>
                             <h3>{m.q}</h3>
                         </Link>

@@ -35,6 +35,7 @@ const ip = require('./routes/ip')
 const solver = require('./routes/gears')
 const faq = require('./routes/faq')
 const SAEDocs = require('./routes/saeDocs')
+const analysis = require('./routes/analysis')
 
 //Port
 const PORT = 9000
@@ -82,6 +83,7 @@ app.use('/upload-doc', SAEDocs)
 app.use('/record-ip', ip)
 app.use('/solve', solver)
 app.use('/faq', faq)
+app.use('/analysis', analysis)
 // app.use('/api', analytics)
 
 //SES config
