@@ -1,3 +1,14 @@
-.nav-link{
-    color: #ffffff !important;
+.navbar {
+    height: 3rem;
+    background-color: #001015;
+}
+.icon-bar {
+    width: 3rem;
+    height: 0.1rem;
+    margin: 0.6rem;
+    background-color: #d1d1d1;
+    display: block;
+    transition: all 0.2s;
+    margin-top: 4px;
+    border-radius: 0.6rem;
 }
