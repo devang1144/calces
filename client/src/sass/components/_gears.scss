@@ -136,6 +136,7 @@ input::-webkit-inner-spin-button {
         pointer-events: none;
     }
     &-panel {
+        position: relative;
         background-color: #001015 !important;
         border-right: 14px solid #00242F !important;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -167,6 +168,10 @@ input::-webkit-inner-spin-button {
                 }
             }
         }
+
+        .bottom-of {
+            bottom: 0;
+        }
     }
 
     &-heading {
@@ -181,6 +186,29 @@ input::-webkit-inner-spin-button {
 
 .gears-page {
 
+}
+
+.s-a {
+    border: none;
+}
+.show-hide-btn, .s-a {
+    border-radius: 0.3rem;
+    margin-top: 1.3rem;
+    margin-right: 1rem;
+    // width: 100px;
+    padding: 0.3rem;
+    background-color: #243637;
+    color: rgb(206, 206, 206);
+    font-family: 'Roboto';
+    border: none;
+    border: 1px solid #bebebe;
+    &:hover {
+        background-color: rgb(0, 43, 40);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
 }
 
 .qwx-sae-right-side {
@@ -231,23 +259,6 @@ input::-webkit-inner-spin-button {
     }
 } 
 
-.show-hide-btn {
-    border-radius: 1.4rem;
-    margin-top: 1.3rem;
-    width: 100px;
-    padding: 0.3rem;
-    background-color: rgb(0, 51, 48);
-    color: white;
-    font-family: 'Roboto';
-
-    &:hover {
-        background-color: rgb(0, 43, 40);
-    }
-
-    &:active {
-        transform: scale(0.98);
-    }
-}
 
 @media (max-width:768px) {
     .qwx-sae-left-side {

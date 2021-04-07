@@ -10,6 +10,8 @@ import logo from '../assets/logo.svg'
 
 import { motion } from 'framer-motion'
 
+import {Link} from 'react-router-dom'
+
 // import Curve from '../sae/Curve'
 class Dash extends Component {
     
@@ -35,6 +37,11 @@ class Dash extends Component {
             name : "shaft",
             icon : 'shaft'
         },
+        {
+            name : "FAQ",
+            icon : "question-circle",
+            link : "/faq"
+        }
     ]
     
     render() {
@@ -51,9 +58,16 @@ class Dash extends Component {
                         <hr/>
                         <ul>
                             {this.links.map(m => 
+                                m.link === undefined ? 
                                 <li style={{ backgroundColor:m.name===this.state.page ? "rgba(6, 51, 65, 0.5)" : null, borderRight:m.name===this.state.page ? "2px solid rgba(33, 120, 94, 1)" : null }} name={m.name} onClick={e => this.changePage(e)}>
                                 {m.name != "shaft" ? <i className={"fa fa-" + m.icon}/> : <img src={sicon} />} {m.name}
-                                </li>    
+                                </li>
+                                : m.link.length != 0 ? 
+                                <Link style={{ textDecoration:"none" }} to={m.link}><li style={{ backgroundColor:m.name===this.state.page ? "rgba(6, 51, 65, 0.5)" : null, borderRight:m.name===this.state.page ? "2px solid rgba(33, 120, 94, 1)" : null }} name={m.name} onClick={e => this.changePage(e)}>
+                                {m.name != "shaft" ? <i className={"fa fa-" + m.icon}/> : <img src={sicon} />} {m.name}
+                                </li></Link> 
+                                :null
+                                    
                             )}
                         </ul>
                 </motion.div>

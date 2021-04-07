@@ -189,6 +189,12 @@ class Gears extends Component {
         this.setState({ result }, () => window.scrollTo(0, 400))
     }
 
+    saveAnalysis = async() => {
+        const payload = {...this.state.data}
+        const {data : res} = await axios.post('/analysis/save/606b335cd229cc49f81a0196', payload)
+        console.log(res)
+    }
+
     topRef = React.createRef()
     toEndOfPage = React.createRef()
 
@@ -310,7 +316,10 @@ class Gears extends Component {
                         </form>}
                         <div className="container">
                         {this.state.result.length !== 0 && 
-                            <Link to="chart-1"><button className="show-hide-btn mb-4" onClick={() => this.setState({ showForm : !this.state.showForm })}>{this.state.showForm === false ? 'Show' : 'Hide'} form</button></Link>
+                            <div>
+                                <Link to="chart-1"><button className="show-hide-btn mb-4" onClick={() => this.setState({ showForm : !this.state.showForm })}>{this.state.showForm === false ? 'Show' : 'Hide'} form</button></Link>
+                                <button className="s-a" onClick={this.saveAnalysis}>Save this analysis</button>
+                            </div>
                         }
                         </div>
                         {this.state.result.length === 0 ? false : true && 
@@ -327,13 +336,18 @@ class Gears extends Component {
                                 </Tooltip>
                             </div>
                         }
-                        {this.state.result.length !== 0 && 
-                        <Chart 
-                        id="chart-1"
-                        page="gear"
-                        data1={this.state.result[1] === undefined ? [] : this.state.result[1]}
-                        data2={this.state.result[2] === undefined ? [] : this.state.result[2]}
-                        />}
+                        {this.state.result.length !== 0 &&
+                        <div>
+                             
+                            <Chart 
+                            id="chart-1"
+                            page="gear"
+                            data1={this.state.result[1] === undefined ? [] : this.state.result[1]}
+                            data2={this.state.result[2] === undefined ? [] : this.state.result[2]}
+                            />
+                        </div>
+                        }
+                        
                         {this.state.result.length !== 0 && 
                         <Table 
                             headings={this.resultTableHaedings} 
