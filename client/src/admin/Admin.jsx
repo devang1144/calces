@@ -28,7 +28,7 @@ class Admin extends Component {
         
         const config = { headers: { 'Authorization': 'Client-ID ee79e79680e3395' } }
         const { data:res } = await axios.post('https://api.imgur.com/3/image/', payload, config)
-        console.log(res)
+        console.log(res);
     }
     
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import logo from './assets/logo.svg'
+import logo from '../assets/logo.svg'
 
 class Navbar extends Component {
 
@@ -16,8 +16,8 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div style={{background:"#0B1A1A"}}>
+                <nav class="navbar navbar-expand-lg navbar-light" >
                     <span class="navbar-brand">
                         <img src={logo} className="img img-fluid" alt="calces logo"/>
                     </span>
@@ -25,20 +25,21 @@ class Navbar extends Component {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav mr-1 justify-content-end pl-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Product <span class="sr-only">(current)</span></a>
+
+                            <a className="nav-link" href="#">Product <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a className="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a className="nav-link" href="#">Pricing</a>
                         </li>
                         </ul>
-                        <span class="navbar-text">
+                        {/* <span class="navbar-text">
                         Navbar text with an inline element
-                        </span>
+                        </span> */}
                     </div>
                     </nav>
             </div>
