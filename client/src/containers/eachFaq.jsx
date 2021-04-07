@@ -19,9 +19,10 @@ class EachFaq extends Component {
     render() {
         const faq = this.state.thisFaq === undefined ? null : this.state.thisFaq
         return (
-            <div>
-                {faq.q}
-                {faq.ans}
+            <div className="e-f-a-q container mt-4">
+                <h3>{faq.q}</h3>
+                <h4>{faq.ans}</h4>
+                <Link to="/faq"><button>Back</button></Link>
             </div>
         );
     }

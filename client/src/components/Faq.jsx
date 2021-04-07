@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import faqBanner from '../assets/faq-banner.png'
+import faqBannerImg from '../assets/faq-banner-img.png'
+import FBI from '../assets/f-b-i.svg'
 import axios, {base} from '../axios-cls'
 
 import {Link} from 'react-router-dom'
@@ -67,18 +69,22 @@ class Faq extends Component {
 
         const el = this.state.loadingFaq === true ? <Loading/> :
         <div className="container-fluid faq-container p-0">
-            {/* <img src={faqBanner} className="w-100 faq-banner" alt=""/> */}
+            <div className="f-b" >
+            <h3>FAQs</h3>
+            <img src={FBI} className="f-b-i" alt=""/>
+            </div>
             <div className="search-faq">
                 <div className="position-relative col-md-8">
-                    <input type="text" className="faq-search" onChange={this.handleChange} name="q" id="q" />
+                    <input type="text" className="faq-search" placeholder="Search FAQ" onChange={this.handleChange} name="q" id="q" />
                     {this.state.searchRes.length != 0 && 
                     <div className="search-results">
                         <ul>
                             {this.state.searchRes.map(m => 
                             <Link to={'/faq/' + m.slug}><li>
-                                <h3>{m.q}</h3>
-                                <h5>{m.ans}</h5>
-                            </li></Link>
+                                <Link to={"/faq/" + m.slug}><h3>{m.q}</h3></Link>
+                                <h5>{m.ans.split(" ").slice(0, 6).join(" ")}</h5>
+                            </li>
+                            </Link>
                             )}
                         </ul>    
                     </div>}
@@ -87,11 +93,19 @@ class Faq extends Component {
             </div>
             <hr/>
             <div className="row m-0">
-                <div className="col-md-4"></div>
+                <div className="col-md-4 position-sticky sticky-top">
+                    <ul className="faq-links position-sticky sticky-top">
+                        <li>What is calces ?</li>
+                        <li>How to save your analysis ?</li>
+                        <li>How to get saved analysis ?</li>
+                    </ul>
+                </div>
                 <div className="col-md-8">
                     {faq.map(m => 
                     <div className="faq-section">
-                        <h3>{m.q}</h3>
+                        <Link to={"/faq/" + m.slug}>
+                            <h3>{m.q}</h3>
+                        </Link>
                         <h4>{m.ans}</h4>
                         <hr/>
                     </div>    

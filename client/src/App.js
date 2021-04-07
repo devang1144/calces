@@ -26,7 +26,6 @@ useEffect(() => {
 
   return (
     <div>
-      <Navbar/>
       <Router>
         <Switch>
             <Route exact path="/" component={Home} />
