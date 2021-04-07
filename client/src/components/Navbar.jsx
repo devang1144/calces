@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import Logo from "../assets/logo.svg"
+
 class Navbar extends Component {
 
     state = {
@@ -15,18 +17,21 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-md d-flex">
-                    <div className="menu-button-container" style={{backgroundColor:"", flexGrow:"1", position:"absolute"}}>
-                        <h1 onClick={this.toggleHamBurger} className="navbar-menu-button">FAQ</h1>
+                <nav className="navbar navbar-expand-md">
+                    <div className="mr-auto position-absolute" style={{ left:"-3rem" }} >
+                        <img src={Logo} className="img img-fluid nav-logo" alt=""/>
                     </div>
                     
-                    <div className="collapse navbar-collapse" id="nav__links"style={{display:"absolute"}}>
-                        <div className="navbar-nav" style={{backgroundColor:"", justifyContent:"end", marginLeft:"0"}}>
-                            <div className="d-flex navbar-brand float-right dropdowns-container">
-                            </div>
+                    <div className="collapse navbar-collapse" id="nav__links">
+                        <div className="ml-auto navbar-nav" style={{backgroundColor:"", justifyContent:"end", marginLeft:"0"}}>
+                            <span className="p-2">Product</span>
+                            <span className="p-2">contact</span>
+                            {/* <span className="p-2">pricing</span> */}
+                            <span className="p-2">Signup</span>
                         </div>
                         
                     </div>
+                    
                     <button onClick={this.toggleSideBar} className="ml-auto navbar-toggler" type="button"
                             data-toggle="collapse"
                             aria-controls="nav__links" aria-expanded="false"
