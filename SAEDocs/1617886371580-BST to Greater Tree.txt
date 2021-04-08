@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+void swap(int *a, int *b) {
+    int c = *b;
+    *b = *a;
+    *a = c;
+}
+
+int partition (int a[][2], int lo, int hi, int col) {
+    int i = lo - 1;
+    int pivot = a[hi][col];
+    
+    for(int j=lo;j<hi;j++) {
+        if(a[j][col] <= pivot) {
+            i++;
+            swap(&a[i][col], &a[j][col]);
+            if (col == 0)
+                swap(&a[i][1], &a[j][1]);
+            else
+                swap(&a[i][0], &a[j][0]);
+
+        }    
+    }
+    swap(&a[i+1][col], &a[hi][col]);
+    if (col == 0)
+        swap(&a[i+1][1], &a[hi][1]);
+    else 
+        swap(&a[i+1][0], &a[hi][0]);
+
+
+    return i+1;
+}
+
+void Sort(int a[][2], int lo, int hi, int col) {
+    if (lo < hi) {
+        int p = partition(a, lo, hi, col);
+        Sort(a, lo, p-1, col);
+        Sort(a, p+1, hi, col);
+    }
+}
+
+void Print(int a[][2], int size, int col) {
+
+    for(int i=0;i<size;i++) {
+        cout << a[i][col] << " ";
+    }
+    cout << "\n";
+}
+
+int main() {
+    int n, l;
+    cin >> n;
+    int a[n][2];
+    for(int i=0;i<n;i++) {
+        cin >> l;
+        a[i][0] = l;
+        a[i][1] = i;
+    }
+    
+    Sort(a, 0, n-1, 0);
+    
+    int sum = 0;
+    int j;
+    int size = (int)sizeof(a)/sizeof(a[0]);
+       for(int i=0;i<size;i++) {
+            j=i;
+            sum = 0;
+            while(j < n) {
+                sum += a[j][0];
+                j++;
+            } 
+            a[i][0] = sum;
+       }
+
+       Sort(a, 0, size-1, 1);
+       Print(a, size, 0);
+    return 0;
+}

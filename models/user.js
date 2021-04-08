@@ -44,6 +44,12 @@ const savedAnalysis = new mongoose.Schema({
     redf : String,
 }, {strict : false})
 
+const docs = new mongoose.Schema({
+    name : String,
+    uploaded_at : String,
+    slug : String
+})
+
 const user = new mongoose.Schema({
     name : String,
     uid : String,
@@ -57,7 +63,8 @@ const user = new mongoose.Schema({
                 provider: String,
                 id:String
             }
-        ]
+        ],
+    docs : [docs]
 
 })
 

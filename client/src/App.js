@@ -1,7 +1,8 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
 import ReactGA, { initialize } from 'react-ga';
+import Cookie from 'js-cookie'
 
 //import scss
 import './sass/main.scss'
@@ -11,28 +12,33 @@ import Dash from './containers/Dash'
 import Admin from './admin/Admin'
 
 import Faq from './components/faq'
-
-import Navbar from './components/Navbar'
 import EachFaq from './containers/eachFaq';
 import Analysis from './components/Analysis'
+
+import axios from './axios-cls'
+import { UsbOutlined } from '@material-ui/icons';
 
 
 function App() {
 
+  const [user, setUser] = useState([])
+
 //google analytics api
-useEffect(() => {
+useEffect(async() => {
   ReactGA.initialize(process.env.REACT_APP_TRACKING_ID)
   ReactGA.pageview(window.location.pathname + window.location.search)
+  const uid = Cookie.get('user') === undefined ? "" : Cookie.get('user').slice(3).slice(0, -1)
+  const user = await axios.get(`/user/${uid}`)
+  setUser(user)
+
 }, [])
 
   return (
     <div>
-      
       <Router>
-      <Navbar/>
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/d" component={Dash} />
+            <Route path="/d" render={(props) => <Dash user={user} {...props} />} />
             <Route path="/admin" component={Admin} />
             <Route path="/faq" exact component={Faq} />
             <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />

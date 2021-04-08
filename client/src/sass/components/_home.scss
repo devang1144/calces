@@ -35,7 +35,7 @@
 }
 
 .h-2 {
-    
+    margin: 5rem auto;
     .h-2-i {
 
     }
@@ -64,4 +64,103 @@
             color: white;
         }
     }
+}
+
+.h-3 {
+    background-color: #00141B;
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+    margin: 10rem auto;
+    .h-3-s-1 {
+        
+        h3 {
+            margin-top: 2rem;
+            font-family: $font-6;
+            font-size: 34px;
+            color: #fff;
+        }
+        h4 {
+            margin-top: 1rem;
+            color: #fff;
+            font-size: 18px;
+            font-family: 'Spartan';
+        }
+        button {
+            margin-top: 1.5rem;
+            border: none;
+            width: 150px;
+            padding: 0.3rem;
+            border-radius: 0.3rem;
+            background-color: #192B31;
+            border: 2px solid #d5d5d5;
+            color: white;
+        }
+    }
+    .h-3-s-2 {
+
+    } 
+} 
+
+.h-4-heading {
+    margin-top: rem;
+    font-family: $font-6;
+}
+
+.a-temp-home {
+    height: 100vh;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.a-temp-list {
+    list-style: none;
+    padding-left: 0;
+    li {
+        padding: 0.3rem;
+        border-radius: 0.3rem;
+        &:hover {
+            cursor: pointer;
+            background-color: rgb(228, 228, 228);
+        }
+    }
+}
+
+
+.btn-a-temp {
+    border: none;
+    box-shadow: rgba(#000000, 0.25) 0px 5px 10px 0px  !important;
+    // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.user-button-a-temp {
+    position: absolute;
+    right: 2rem;
+    top: 0.4rem;
+    background-color: rgba(6, 57, 68, 0.5);
+    width: 120px;
+    padding: 0.3rem 0.3rem 0.3rem 0.5rem;
+    border-radius: 0.16rem;
+    font-size: 18px;
+    padding-bottom: -1.3rem !important;
+}
+.fa-temp-c {
+    position: absolute;
+    right: 2.6rem;
+    color: white;
+    top: 0.9rem;
+    font-size: 20px !important;
+    z-index: 10000 !important;
+}
+
+
+.login-buttons {
+    a {
+        text-decoration: none !important;
+        .l-b {
+            background-color: #101D3A;
+            color: white;
+            font-family: 'Roboto';
+        }
+    }
+
+    margin-bottom: 3rem;
 }

@@ -5,6 +5,7 @@ import { Modal } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Snackbar from '@material-ui/core/Snackbar';
+import Cookie from 'js-cookie'
 
 //global worker to load pdf (if using react-pdf )
 // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -40,7 +41,8 @@ class Docs extends Component {
 
     componentDidMount = async() => {
         document.addEventListener('click', this.handleClickOutsideModal, true);
-        const { data : Docs } = await axios.get('/upload-doc')
+        const { data : Docs } = await axios.get('/upload-doc/g/' + this.props.user.data._id)
+        console.log(Docs)
         this.setState({ Docs })
     }
 
@@ -63,7 +65,7 @@ class Docs extends Component {
 
         const config = { headers: { 'content-type': 'multipart/form-data' } }
 
-        const { data:res } = await axios.post('/upload-doc', payload, config)  
+        const { data:res } = await axios.post(`/upload-doc/${this.props.user.data._id}`, payload, config)  
         if (res.length != 0) this.setState({ docUploadSuccess : true, data : { saedocs : null, filename : "" } })     
     }
 
@@ -159,7 +161,6 @@ class Docs extends Component {
     render() {
         
         // document.body.style.overflow = this.state.bodyscroll
-        
         const { docPath, docName, docType } = this.state;
         const Docs = this.state.Docs === undefined ? null : this.state.Docs
         return (
@@ -232,7 +233,7 @@ class Docs extends Component {
                     <tbody>
                         {Docs.map((m, key) => 
                             <Tooltip title={m.name} placement="left-start" open={false}>
-                                <tr name={key} key={key} id={key} onClick={e => this.openPdf(e, m.name, m.path)}>
+                                <tr name={key} key={key} id={key} onClick={e => this.openPdf(e, m.name, m.slug)}>
                                     <td>{m.name}</td>
                                     <td>{m.created_at}</td>
                                 </tr>   

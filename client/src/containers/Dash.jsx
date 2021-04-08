@@ -16,7 +16,8 @@ import {Link} from 'react-router-dom'
 class Dash extends Component {
     
     state = {
-        page : "Gears"
+        page : "Gears",
+        user : this.props.user
     }
 
     changePage = e => {
@@ -77,7 +78,7 @@ class Dash extends Component {
                         </ul>
                 </motion.div>
                 <div className="col-md-10 offset-md-2 qwx-sae-right-side-panel">
-                    {page === "Gears" ? <Gears/> : page === "shaft" ? <Shaft/> : page === "Docs" ? <Docs /> : null}
+                    {page === "Gears" ? <Gears/> : page === "shaft" ? <Shaft/> : page === "Docs" ? <Docs user={this.props.user}/> : null}
                 </div>
             </div>
         );

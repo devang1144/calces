@@ -80,7 +80,7 @@ class Faq extends Component {
             <div className="search-faq">
                 <div className="position-relative col-md-8">
                     <input ref={this.inputRef} type="text" className="faq-search" placeholder="Search FAQ" onChange={this.handleChange} name="q" id="q" />
-                    { this.state.showResult && this.state.searchRes.length != 0 && 
+                    { this.state.showResult && this.state.q.length != 0 && this.state.showResult.length !=0 &&
                     <div className="search-results">
                         <ul>
                             {this.state.searchRes.map(m => 

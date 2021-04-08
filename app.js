@@ -34,8 +34,9 @@ require('./routes/auth.js');
 const ip = require('./routes/ip')
 const solver = require('./routes/gears')
 const faq = require('./routes/faq')
-const SAEDocs = require('./routes/saeDocs')
+const Docs = require('./routes/Docs')
 const analysis = require('./routes/analysis')
+const user = require('./routes/user')
 
 //Port
 const PORT = 9000
@@ -79,11 +80,12 @@ app.use(passport.session())
 // app.use(cookie())
 
 //middlewares
-app.use('/upload-doc', SAEDocs)
+app.use('/upload-doc', Docs)
 app.use('/record-ip', ip)
 app.use('/solve', solver)
 app.use('/faq', faq)
 app.use('/analysis', analysis)
+app.use('/user', user)
 // app.use('/api', analytics)
 
 //SES config
