@@ -27,7 +27,7 @@ function App() {
 useEffect(async() => {
   ReactGA.initialize(process.env.REACT_APP_TRACKING_ID)
   ReactGA.pageview(window.location.pathname + window.location.search)
-  const uid = Cookie.get('user') === undefined ? "" : Cookie.get('user').slice(3).slice(0, -1)
+  const uid = Cookie.get('user') === undefined ? "" : Cookie.get('user')
   const user = await axios.get(`/user/${uid}`)
   setUser(user)
 
