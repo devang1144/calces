@@ -1,5 +1,5 @@
 const { FOS } = require('./lib')
-calc = (module, fw1, fw2, npi, npf, ngi, ngf, length, rpm, torque, pr, elasticModulus, hardness, Q, Ko, process, material, grade, minFOS, redi, redf) => {
+calc = (module, fw1, fw2, npi, npf, ngi, ngf, length, rpm, torque, pr, elasticModulus, hardness, Q, Ko, process, material, grade, minFOSp, minFOSg , redi, redf) => {
     let result = []
     let graph1 = []
     let graph2 = []
@@ -10,11 +10,15 @@ calc = (module, fw1, fw2, npi, npf, ngi, ngf, length, rpm, torque, pr, elasticMo
     for(let n1=npi;n1<=npf;n1++) {
         for(let n2=ngi;n2<=ngf;n2++) {
             let reduction = n2/n1
-            if (reduction > redf || reduction < redi) continue;
+            if (reduction > redf || reduction < redi) break;
             let len = module*(n1 + n2 + 2) + 12 //in mm
             for(let f = fw1 ; f<=fw2; f+=0.1) {
                 let fos =  FOS(module, n1, n2, f, rpm, torque, pr, elasticModulus, hardness, Q, Ko, process, material, grade)
-                if(len <= length && fos[0]>=minFOS && fos[1]>=minFOS) {
+                let fosg =  FOS(module, n2, n1, f, rpm/reduction, torque*reduction, pr, elasticModulus, hardness, Q, Ko, process, material, grade)
+                
+                if (len > length || fos[0]<minFOSp && fos[1]<minFOSg) break //wrong solution
+
+                if(len <= length && fos[0]>=minFOSp && fos[1]>=minFOSg) {
                     if (minFOS_bending > fos[0]) {
                         index_min_FOS_bending = count1
                         minFOS_bending = fos[0]

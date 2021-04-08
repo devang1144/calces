@@ -403,20 +403,20 @@ let Y = [
 ]
 
 geometryFactor = (N, N2) => {
-    var x = [17, 20, 24, 30, 35, 40, 45, 50, 60, 80, 125];
-    var y_right = [17, 25, 35, 50, 85, 170];
-    var count_x = 0;
-    var count_y = 0;
+    let x = [17, 20, 24, 30, 35, 40, 45, 50, 60, 80, 125];
+    let y_right = [17, 25, 35, 50, 85, 170];
+    let count_x = 0;
+    let count_y = 0;
 
-    while (N >= x[count_x]) {
+    while (N >= x[count_x])
         count_x += 1;
-    }
-    while (N2 >= y_right[count_y]) {
+    while (N2 >= y_right[count_y])
         count_y += 1;
-    }
-    var g = new Array(170);
-    for (var i = 0; i < 170; i++) {
-        g[i] = new Array(125);
+
+    let g = new Array(170);
+
+    for (let i = 0; i < 170; i++) {
+        g[i] = new Array(170);
     }
     g[17][17] = 0.292;
     g[17][25] = 0.304;
@@ -485,68 +485,68 @@ geometryFactor = (N, N2) => {
     g[125][85]  = 0.4819;
     g[125][170] = 0.50;
 
-  var j1 = g[x[count_x - 1]][y_right[count_y - 1]];
-  var j2 = g[x[count_x]][y_right[count_y]];
+    let x_ = count_x === 0 ?  0: count_x-1
+    let y_ = count_y === 0 ?  0: count_y-1
+
+    let j1 = g[x[x_]][y_right[y_]];
+    
+    let j2 = g[x[count_x]][y_right[count_y]];
 
   return (j1+j2)/2;
 
 }
 
 FOS = (m, N, N2, F, rpm, torque, pr, elasticModulus, hardness, Q, Ko, process, material, grade) => {
-    var D = (m * N) / 25.4; //in in.
-    var P = 25.4 / m;
-    var reduction = N2 / N;
-    var force = 0.225 * 2000 * torque / (D * 25.4);
-    var Kb = 1,
-        Zr = 1,
+    let D = (m * N) / 25.4; //in in.
+    let P = 25.4 / m;
+
+    let reduction = N2 / N;
+    let force = 0.225 * 2000 * torque / (D * 25.4);
+
+    let Kb = 1, Zr = 1,
         phi = 20,    // pressure angle
         Kr = 1.25,   // Reliability factor
-        Kt = 1,
-        mn = 1,
-        Cmc = 1,
-        Cpm = 1,
-        Ce = 1,
-        A1 = 0.0675,
-        B1 = 0.0128,
-        C = -0.926E-4;
 
-    //Dynamic Factor
-    var v = (D * 25.4 / 2000) * rpm * (Math.PI / 30) * 196.85;
-    var B = 0.25 * Math.pow(12 - Q, 2 / 3);
-    var A = 50 + 56 * (1 - B)
-    var Kv = Math.pow((A + Math.sqrt(v)) / A, B);
+        Kt = 1, mn = 1, Cmc = 1, Cpm = 1, Ce = 1, A1 = 0.0675, B1 = 0.0128, C = -0.926E-4;
 
-    //Load Distribution Factor
+    //Dynamic Factor (Kv)
+    let v = (D * 25.4 / 2000) * rpm * (Math.PI / 30) * 196.85;
+    let B = 0.25 * Math.pow(12 - Q, 2 / 3);
+    let A = 50 + 56 * (1 - B)
+    let Kv = Math.pow((A + Math.sqrt(v)) / A, B);
+    let Cpf;
+
+    //Load Distribution Factor (Cpf)
     if (F <= 1) {
-        var Cpf = F / (10 * D) - 0.025;
+        Cpf = F / (10 * D) - 0.025;
     } else {
-        var Cpf = F / (10 * D) - 0.0375 + (0.0125 * F);
+        Cpf = F / (10 * D) - 0.0375 + (0.0125 * F);
     }
 
-    var Cma = A1 + B1 * F + C * F ** 2;
-    var Km = 1 + Cmc * (Cpf * Cpm + Cma * Ce);
+    let Cma = A1 + B1 * F + C * F ** 2;
+    let Km = 1 + Cmc * (Cpf * Cpm + Cma * Ce);
 
     //Size Factor
-    var Ks = 1.192 * Math.pow(F * Math.sqrt(Y[N - 1]) / P, 0.0535);
+    let Ks = 1.192 * Math.pow(F * Math.sqrt(Y[N - 1]) / P, 0.0535);
 
     //Surface strength geometry factorP
-    var mg = reduction;
-    var I = (Math.cos(phi) * Math.sin(phi) / 2 * mn) * (mg / (mg + 1));
+    let mg = reduction;
+    let I = (Math.cos(phi) * Math.sin(phi) / 2 * mn) * (mg / (mg + 1));
 
     //Elasticity coefficient
-    var a = Math.PI * ((1 - pr ** 2) / elasticModulus + (1 - pr ** 2) / elasticModulus);
-    var Cp = Math.sqrt(1 / a) * 380.838 //in root(psi)  380.838 for conversion  root(GPa) --> root(psi)
+    let a = Math.PI * ((1 - pr ** 2) / elasticModulus + (1 - pr ** 2) / elasticModulus);
+    let Cp = Math.sqrt(1 / a) * 380.838 //in root(psi)  380.838 for conversion  root(GPa) --> root(psi)
 
     //Geometry Factor
-//     var J = geometryFactor(N, N2);
+    let J = geometryFactor(N, N2);
 
-    var St = 77.3*hardness + 12800;
-    var Sc = 322* hardness * 1.928 + 29100;
-    var Bending_stress = force * Ko * Kv * Ks * Km * Kb * P / (F * 0.43);
-    var Contact_stress = Cp * Math.sqrt(force * Ko * Kv * Ks * Km / (D * F * I));
+    let St = 77.3*hardness + 12800;
+    let Sc = 322* hardness * 1.928 + 29100;
+    let Bending_stress = force * Ko * Kv * Ks * Km * Kb * P / (F * J);
+    let Contact_stress = Cp * Math.sqrt(force * Ko * Kv * Ks * Km / (D * F * I));
 
-    var Yn = 1.3558 * Math.pow(1e7, -0.0178);
-    var Zn = 1.4488 * Math.pow(1e7, -0.023);
+    let Yn = 1.3558 * Math.pow(1e7, -0.0178);
+    let Zn = 1.4488 * Math.pow(1e7, -0.023);
 
     if(process===2 && material===0 && grade===1) {                 //Through hardened  g-1
          St = 77.3*hardness + 12800; //in psi
@@ -605,19 +605,15 @@ FOS = (m, N, N2, F, rpm, torque, pr, elasticModulus, hardness, Q, Ko, process, m
          Sc = 172000; //in psi    
     }
 
-
-
-    var fos_b = St * Yn / (Kt * Kr * Bending_stress);
-    var fos_c = Sc * Zn / (Kt * Kr * Contact_stress);
+    const fos_b = St * Yn / (Kt * Kr * Bending_stress);
+    const fos_c = Sc * Zn / (Kt * Kr * Contact_stress);
     return [fos_b, fos_c]
-    // document.getElementById("display").innerHTML = [fos_b, fos_c];
-
 
 }
 
 
-function worst_case_loading(torque, power) {
-    var avg_rpm = (power / torque) * (30 / Math.PI);
+worst_case_loading = (torque, power) => {
+    let avg_rpm = (power / torque) * (30 / Math.PI);
     return [torque, avg_rpm]
 }
 

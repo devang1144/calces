@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import Input from '../common/Input'
 import Dropdown from '../common/dropdown'
 import Table from '../common/Table'
-import Tooltip from '@material-ui/core/Tooltip';
-import Snackbar from '@material-ui/core/Snackbar';
+
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import axios, {base} from '../axios-cls'
 import Chart from './Chart'
 import { motion } from 'framer-motion';
-class Gears extends Component {
+
+import GFuncs from '../containers/gearFunctions'
+class Gears extends GFuncs {
 
     state = {
         defaultRadio : "",
@@ -44,119 +45,21 @@ class Gears extends Component {
             npinionf : "70",
             ngeari : "70",
             ngearf : "100",
-            minFOS : "1.45"
+            minFOSp : "1.4",
+            minFOSg : "1.6"
         }
-    }
-    materials = [
-        {
-            name : "Steel",
-            value : "0"
-        },
-        {
-            name : "Nitralloy 135M",
-            value : "1"
-        },
-        {
-            name : "Nitralloy N and 2.5% chrome",
-            value : "2"
-        },
-    ]
-
-    gearbox = [
-        {
-            name : "Single Reduction",
-            value : "0"
-        },
-        {
-            name : "Double Reduction",
-            value : "1"
-        },
-        {
-            name : "Epicyclic",
-            value : "2"
-        },
-    ]
-
-    process = [
-        {
-            name : "Carburized and hardened",
-            value : "0"
-        },
-        {
-            name : "Nitrided",
-            value : "1"
-        },
-        {
-            name : "Through Hardened",
-            value : "2"
-        },
-        {
-            name : "Nitrided and through hardened",
-            value : "3"
-        },
-        {
-            name : "Flame or Induction Hardened",
-            value : "4"
-        }
-
-    ]
-
-    resultTableHaedings = [
-       "m", "Face Width(inch)", "npinion", "ngear", "reduction", "FOS_bending", "FOS_contact", "L", "Q", "ko",
-    ]
-
-    componentDidMount = () => {
-        window.scrollTo(0, 0)
     }
     
-    handleChange = ({currentTarget:input}) => {
-        const data = {...this.state.data};
-        data[input.name] = input.value;
-        this.setState({ data });
-        console.log(data)
-    };
+    initialState = {...this.state.data}
 
-    changeRadio = e => {
-        console.log(e.target.value)
-        this.setState({ defaultRadio: e.target.value})
+    componentDidMount = async() => {
+        window.scrollTo(0, 0)
     }
 
     change = (field, material) => {
         console.log(material)
         this.state.data[`${field}`] = material
         this.setState(this.state)
-    }
-
-    resetState = (e) => {
-        e.preventDefault()
-        this.setState({ data : {
-            fwidth1:"",
-            fwidth2:"",
-            ko:"",
-            Q:"",
-            L:"",
-            rpm:"",
-            torque:"",
-            power:"",
-            cvt:"",
-            hardness:"",
-            modulus:"200",
-            module:"",
-            module1:"",
-            module2:"",
-            grade:"",
-            process:"",
-            material:"",
-            poisson:"0.29",
-            gearbox : "",
-            npinioni : "",
-            npinionf : "",
-            ngeari : "",
-            ngearf : "",
-            minFOS : "",
-            redi : "1.5",
-            redf :"3"
-        } })
     }
 
     handleSumbit = async e => {
@@ -186,7 +89,8 @@ class Gears extends Component {
             npinionf : data.npinionf,
             ngeari : data.ngeari,
             ngearf : data.ngearf,
-            minFOS : data.minFOS,
+            minFOSp : data.minFOSp,
+            minFOSg : data.minFOSg,
             redi : data.redi,
             redf : data.redf
         }
@@ -200,11 +104,6 @@ class Gears extends Component {
         const {data : res} = await axios.post('/analysis/save/606b335cd229cc49f81a0196', payload)
         this.setState({ analysisSaved : true })
     }
-
-    closeNotification = () => {
-        this.setState({ analysisSaved : false })
-    }
-
     topRef = React.createRef()
     toEndOfPage = React.createRef()
 
@@ -216,6 +115,7 @@ class Gears extends Component {
         let val = this.state.defaultRadio
         const data = this.state.data
         const gearbox = this.state.data.gearbox
+        console.log(data)
 
         return (
             <motion.div initial={{y:-25}} animate={{y:0}} transition={{ type: "spring", stiffness: 160 }} ref={this.topRef} className="gears-page container-fluid p-0">
@@ -265,48 +165,22 @@ class Gears extends Component {
                                     <Dropdown id="dropdown" changeCallback={this.change} title="gearbox" width="200px" array={this.gearbox}/>
                                     {gearbox === "0" && <div className="row m-0">
                                         <Input onChange={this.handleChange} value={data.module} name="module" label="module" placeholder="module" size="col-md-6" text="for eg. 1.25, 1.5, 2, 2.5, 3, 4"/>
-                                        <Input onChange={this.handleChange} value={data.minFOS} name="minFOS" label="min FOS" placeholder="module" size="col-md-6" text="min value of FOS required"/>
-                                        <div className="face-width-range col-md-6">
-                                            <h5>pinion teeth</h5>
-                                            <span>from&nbsp;</span>
-                                            <input min="8" max="101" onChange={this.handleChange} value={data.npinioni} name="npinioni" id="npinioni" type="number"/>&nbsp;
-                                            <span>to&nbsp;</span>&nbsp;
-                                            <input max="250" onChange={this.handleChange} value={data.npinionf} name="npinionf" id="npinionf" type="number"/>
-                                        </div>
-                                        <div className="face-width-range col-md-6 mb-4">
-                                            <h5>Gear teeth</h5>
-                                            <span>from&nbsp;</span>
-                                            <input min="8" max="101" onChange={this.handleChange} value={data.ngeari} name="ngeari" id="ngeari" type="number"/>&nbsp;
-                                            <span>to&nbsp;</span>&nbsp;
-                                            <input min="16" max="250" onChange={this.handleChange} value={data.ngearf} name="ngearf" id="ngearf" type="number"/>
-                                        </div>
-                                        <div className="face-width-range col-md-6 mb-4">
-                                            <h5>Reduction range</h5>
-                                            <span>from&nbsp;</span>
-                                            <input max="12" onChange={this.handleChange} value={data.redi} name="redi" id="redi" type="number"/>&nbsp;
-                                            <span>to&nbsp;</span>&nbsp;
-                                            <input max="12" onChange={this.handleChange} value={data.redf} name="redf" id="redf" type="number"/>
-                                        </div>
-                                        <div className="face-width-range col-md-6">
-                                            <h5>Face width range(in inch)</h5>
-                                            <span>from&nbsp;</span>
-                                            <input min="0.1" step="0.1" max="2.5" onChange={this.handleChange} value={data.fwidth1} name="fwidth1" id="fwidth1" type="number"/>&nbsp;
-                                            <span>to&nbsp;</span>&nbsp;
-                                            <input min="0.1" step="0.1" max="2.5" onChange={this.handleChange} value={data.fwidth2} name="fwidth2" id="fwidth2" type="number"/>
-                                        </div>
+                                        <Input onChange={this.handleChange} value={data.minFOSp} name="minFOSp" label="min FOS pinion" placeholder="module" size="col-md-6" text="min value of FOS pinion required"/>
+                                        <Input onChange={this.handleChange} value={data.minFOSg} name="minFOSg" label="min FOS gear" placeholder="module" size="col-md-6" text="min value of FOS gear required"/>
+                                        {this.faceWidthRange("pinion teeth", "npinioni", "npinionf")}
+                                        {this.faceWidthRange("Gear teeth", "ngeari", "ngearf")}
+                                        {this.faceWidthRange("Reduction range", "redi", "redf")}
+                                        {this.faceWidthRange("Face width range(in inch)", "fwidth1", "fwidth2")}
                                     </div>}
+
+                                    {/*Double reduction gearbox*/}
                                     {gearbox === "1" && <div className="row m-0">
                                         <Input onChange={this.handleChange} value={data.module1} name="module1" label="module1" placeholder="module1" size="col-md-6" text="for eg. 1.25, 1.5, 2, 2.5, 3, 4"/>
                                         <Input onChange={this.handleChange} value={data.module2} name="module2" label="module2" placeholder="module2" size="col-md-6" text="for eg. 1.25, 1.5, 2, 2.5, 3, 4"/>
-                                        <div className="face-width-range col-md-6">
-                                            <h5>Face width range(in inch)</h5>
-                                            <span>from&nbsp;</span>
-                                            <input min="0.1" max="2.5" onChange={this.handleChange} value={data.fwidth1} name="fwidth1" id="fwidth1" type="number"/>&nbsp;
-                                            <span>to&nbsp;</span>&nbsp;
-                                            <input min="0.1" max="2.5" onChange={this.handleChange} value={data.fwidth2} name="fwidth2" id="fwidth2" type="number"/>
-                                            {gearbox === "1" && <p className="message-text">face width range is for both pinion and Gear</p>}
-                                        </div>
-                                        
+                                        {this.faceWidthRange("Face width range(in inch) for first pair", "fwidthpair1", "fwidthpair1")}
+                                        {this.faceWidthRange("Face width range(in inch) for second pair", "fwidthpair2", "fwidthpair2")}
+                                        {this.faceWidthRange("First reduction range R1", "R1", "R1")}
+                                        {this.faceWidthRange("Second reduction range R2", "R2", "R2")}
                                     </div>}
                                 </div>
                             </div>
@@ -333,33 +207,9 @@ class Gears extends Component {
                             </div>
                         }
                         </div>
-                        {this.state.result.length === 0 ? false : true && 
-                            <div>
-                                <Snackbar 
-                                  open={this.state.analysisSaved} 
-                                  autoHideDuration={3000} 
-                                  anchorOrigin={{ vertical:this.snackPosition.vertical, horizontal:this.snackPosition.horizontal }}
-                                  key={this.snackPosition.vertical + this.snackPosition.horizontal}
-                                  onClose={this.closeNotification}>
-                                  <p onClose={this.handleClose} style={{ backgroundColor:"#FFF8BE", color:"#444", padding:"0.2rem", borderRadius:"0.1rem" }}>
-                                  Analysis saved !!
-                                  </p>
-                                 </Snackbar>
-                                <Tooltip title="back to top">
-                                    <div onClick={this.executeTopScroll} className="back-to-top-button">
-                                        <i className="d-flex justify-content-center align-items-center fa fa-angle-up"></i>
-                                    </div>
-                                </Tooltip>
-                                <Tooltip title="to end of page">
-                                    <div onClick={this.executeToEndScroll} className="to-end-of-page">
-                                        <i className="d-flex justify-content-center align-items-center fa fa-angle-down"></i>
-                                    </div>
-                                </Tooltip>
-                            </div>
-                        }
+                        {this.renderToolitpAndSnackbar()}
                         {this.state.result.length !== 0 &&
-                        <div>
-                             
+                        <div>    
                             <Chart 
                             id="chart-1"
                             page="gear"
