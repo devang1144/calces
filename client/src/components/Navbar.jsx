@@ -1,25 +1,28 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useRef , useState } from 'react'
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { base } from '../base';
 
-import Logo from "../assets/logo.svg"
+import Logo from "../assets/logo.svg";
 
-class Navbar extends Component {
+const Navbar = props => {
+    const history = useHistory();
 
-    state = {
 
-    }
-
-    componentDidMount = async() => {
-        
+    const handlelogout= async() =>{
+        await axios.get(base + '/logout');
+        await Cookies.remove("user");
+        history.push('/');
     }
     
 
-    render() {
+    
         return (
-            <div>
+            <div style={{width:"100%"}}>
                 <nav className="navbar navbar-expand-md">
                     <div className="mr-auto position-absolute" style={{ left:"-3rem" }} >
-                        <img src={Logo} className="img img-fluid nav-logo" alt=""/>
+                        <Link to='/'><img src={Logo} className="img img-fluid nav-logo" alt=""/></Link>
                     </div>
                     
                     <div className="collapse navbar-collapse" id="nav__links">
@@ -27,12 +30,13 @@ class Navbar extends Component {
                             <span className="p-2">Product</span>
                             <span className="p-2">contact</span>
                             {/* <span className="p-2">pricing</span> */}
-                            <span className="p-2">Signup</span>
+                            {!Cookies.get('user') && <a href="#signup" style={{textDecoration:"none", paddingTop:"0.5rem"}}><span className="p-2">Signup</span></a>}    
+                            {Cookies.get('user') && <span className="ml-0 p-2" onClick={handlelogout}>Logout</span>}
                         </div>
                         
                     </div>
                     
-                    <button onClick={this.toggleSideBar} className="ml-auto navbar-toggler" type="button"
+                    <button className="ml-auto navbar-toggler" type="button"
                             data-toggle="collapse"
                             aria-controls="nav__links" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -43,7 +47,6 @@ class Navbar extends Component {
                 </nav>
             </div>
         );
-    }
 }
 
 export default Navbar;

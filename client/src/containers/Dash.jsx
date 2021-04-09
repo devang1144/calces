@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import Gears from '../components/gears'
-import Shaft from '../components/Shafts'
-import Docs from '../components/Docs'
+import Gears from '../components/gears';
+import Shaft from '../components/Shafts';
+import Docs from '../components/Docs';
+import Navbar from '../components/Navbar';
+import sicon from '../assets/shaft.svg';
+import logo from '../assets/logo.svg';
 
-import sicon from '../assets/shaft.svg'
-import logo from '../assets/logo.svg'
+import { motion } from 'framer-motion';
 
-import { motion } from 'framer-motion'
-
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+import { base } from '../base';
 
 // import Curve from '../sae/Curve'
 class Dash extends Component {
@@ -49,7 +51,11 @@ class Dash extends Component {
             link : "/analysis/saved"
         }
     ]
-    
+    handlelogout= async() =>{
+        await axios.get(base + '/logout');
+        Cookies.remove("user");
+
+    }
     render() {
         const page = this.state.page
         if(Cookies.get("user")==undefined){
@@ -57,6 +63,7 @@ class Dash extends Component {
         }
         return (
             <div style={{ backgroundColor:"#001015" }} className="row m-0">
+                <Navbar />
                 <motion.div initial={{ left:-100 }} animate={{ left:0 }} transition={{ duration: 0.3 }} className="col-md-2 qwx-sae-left-side-panel p-0">
                         <div className="d-flex justify-content-center align-items-center">
                             <img src={logo} className="qwx-sae-left-side-logo" alt=""/> 

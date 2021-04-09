@@ -53,6 +53,7 @@ const docs = new mongoose.Schema({
 const user = new mongoose.Schema({
     name : String,
     uid : String,
+    email: String,
     sessionId: String,
     calculation_Count : String,
     public_ip : String,

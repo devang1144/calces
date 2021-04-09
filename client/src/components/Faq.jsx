@@ -6,6 +6,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Navbar from './Navbar';
 
 import faqBanner from '../assets/faq-banner.png'
 import faqBannerImg from '../assets/faq-banner-img.png'
@@ -73,6 +74,7 @@ class Faq extends Component {
 
         const el = this.state.loadingFaq === true ? <Loading/> :
         <div className="container-fluid faq-container p-0">
+            <Navbar />
             <div className="f-b" >
             <h3>FAQs</h3>
             <img src={FBI} className="f-b-i" alt=""/>

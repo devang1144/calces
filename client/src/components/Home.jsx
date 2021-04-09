@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { base } from '../base';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import Navbar from './Navbar'
 import homeImg from '../assets/home-top-img.svg'
@@ -11,6 +12,9 @@ import homeImg3 from '../assets/home-img-3.svg'
 import AnalysisTemp from '../common/analysisTemp.jsx'
 class Home extends Component {
     render() {
+        if(Cookies.get("user")!=undefined){
+            return <Redirect to='/d'></Redirect>
+        }
         return (
             <div className="container-fluid p-0">
                 <Navbar/>
@@ -49,7 +53,7 @@ class Home extends Component {
                 </div>
                     <h3 className="text-center h-4-heading">A comfortable interface for your needs</h3>
                     <AnalysisTemp/>
-                    <div className="login-buttons d-flex justify-content-center align-items-center">
+                    <div className="login-buttons d-flex justify-content-center align-items-center" id="signup">
                         <a href={base + 'google/login'} ><Button variant="contained"  className="mt-5 l-b" >Countinue with Google</Button></a>
                         <a href={base + 'facebook/login'}><Button variant="contained" className="ml-5 mt-5 l-b" >Countinue with Facebook</Button></a>
                     </div>
