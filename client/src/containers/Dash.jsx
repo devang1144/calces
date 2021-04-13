@@ -53,12 +53,12 @@ class Dash extends Component {
     ]
     handlelogout= async() =>{
         await axios.get(base + '/logout');
-        Cookies.remove("user");
+        Cookies.remove("calcesSSID");
 
     }
     render() {
         const page = this.state.page
-        if(Cookies.get("user")==undefined){
+        if(Cookies.get("calcesSSID")==undefined){
             return (<Redirect to="/"></Redirect>)
         }
         return (

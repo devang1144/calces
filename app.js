@@ -152,7 +152,7 @@ app.get('/google/login',
 
 //callback route
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  res.cookie("user",req.user._id.toString())
+  res.cookie("calcesSSID",req.user._id.toString())
   res.redirect('/d')
 })
 
@@ -176,7 +176,7 @@ app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' }
 
 //facebook callback route
 app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/' }), (req, res) => {
-  res.cookie("user",req.user._id.toString())
+  res.cookie("calcesSSID",req.user._id.toString())
   res.redirect('/d')
 })
 

@@ -12,7 +12,7 @@ import homeImg3 from '../assets/home-img-3.svg'
 import AnalysisTemp from '../common/analysisTemp.jsx'
 class Home extends Component {
     render() {
-        if(Cookies.get("user")!=undefined){
+        if(Cookies.get("calcesSSID")!=undefined){
             return <Redirect to='/d'></Redirect>
         }
         return (
