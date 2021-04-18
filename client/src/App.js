@@ -38,7 +38,7 @@ useEffect(async() => {
       <Router>
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/d" render={(props) => <Dash user={user} {...props} />} />
+            <Route user={user} path="/d" render={(props) => <Dash user={user} {...props} />} />
             <Route path="/admin" component={Admin} />
             <Route path="/faq" exact component={Faq} />
             <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />

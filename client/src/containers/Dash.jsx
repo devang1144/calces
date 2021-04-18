@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import Gears from '../components/gears';
 import Shaft from '../components/Shafts';
 import Docs from '../components/Docs';
-import Navbar from '../components/Navbar';
+import NavbarDash from '../components/NavbarDash';
 import sicon from '../assets/shaft.svg';
 import logo from '../assets/logo.svg';
 
@@ -63,7 +63,7 @@ class Dash extends Component {
         }
         return (
             <div style={{ backgroundColor:"#001015" }} className="row m-0">
-                <Navbar />
+                {/* <Navbar /> */}
                 <motion.div initial={{ left:-100 }} animate={{ left:0 }} transition={{ duration: 0.3 }} className="col-md-2 qwx-sae-left-side-panel p-0">
                         <div className="d-flex justify-content-center align-items-center">
                             <img src={logo} className="qwx-sae-left-side-logo" alt=""/> 
@@ -85,6 +85,7 @@ class Dash extends Component {
                         </ul>
                 </motion.div>
                 <div className="col-md-10 offset-md-2 qwx-sae-right-side-panel">
+                    <NavbarDash user={this.props.user}/>
                     {page === "Gears" ? <Gears/> : page === "shaft" ? <Shaft/> : page === "Docs" ? <Docs user={this.props.user}/> : null}
                 </div>
             </div>

@@ -1,0 +1,27 @@
+.user-utils {
+    position: fixed;
+    background-color: white;
+    z-index: 1000;
+    right: 1rem;
+    border-radius: 0.3rem;
+    transition: all 0.3s;
+    width: 180px;
+    .user-utils-ul {
+        padding-left: 0;
+        list-style: none;
+        margin-bottom: 0;
+        padding: 0.3rem;
+        font-family: 'Roboto';
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        li {
+            color: black;
+            margin: 0.4rem auto;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

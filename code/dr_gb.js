@@ -27,8 +27,8 @@ export function calc(m1, m2, fw1, fw2, length, rpm, torque, poisson, modulus, ha
                     let fos3 =  FOS(m2, n3, n4, fw2, rpm/red1, torque*red1, poisson, modulus, hardness, Q, Ko, process, material, grade)
                     let fos4 =  FOS(m2, n4, n3, fw2, rpm/(red1*red2), torque*red1*red2, poisson, modulus, hardness, Q, Ko, process, material, grade)
 
-                    
-                    
+                    result.push({ fosp1b:fos1[0], fosp1c:fos1[1], fosg1b:fos2[0], fosg1c:fos2[0], fosp2b:fos3[0], fosp2c:fos3[0], fosg2b:fos4[0], fosg2c:fos4[0],  })
+                    return result
                 }
             }
         }
