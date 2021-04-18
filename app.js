@@ -31,12 +31,13 @@ const mongoose = require('mongoose')
 
 //routes
 require('./routes/auth.js');
-const ip = require('./routes/ip')
-const solver = require('./routes/gears')
-const faq = require('./routes/faq')
-const Docs = require('./routes/Docs')
-const analysis = require('./routes/analysis')
-const user = require('./routes/user')
+const ip = require('./routes/ip');
+const solver = require('./routes/gears');
+const faq = require('./routes/faq');
+const Docs = require('./routes/Docs');
+const analysis = require('./routes/analysis');
+const user = require('./routes/user');
+const Query = require('./routes/query');
 
 //Port
 const PORT = 9000
@@ -71,21 +72,22 @@ app.use(express.json())
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
-}))
+}));
 
 
 //login system middleware
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 // app.use(cookie())
 
 //middlewares
-app.use('/upload-doc', Docs)
-app.use('/record-ip', ip)
-app.use('/solve', solver)
-app.use('/faq', faq)
-app.use('/analysis', analysis)
-app.use('/user', user)
+app.use('/upload-doc', Docs);
+app.use('/record-ip', ip);
+app.use('/solve', solver);
+app.use('/faq', faq);
+app.use('/analysis', analysis);
+app.use('/user', user);
+app.use('/query',Query);
 // app.use('/api', analytics)
 
 //SES config
@@ -152,7 +154,7 @@ app.get('/google/login',
 
 //callback route
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  res.cookie("user",req.user._id.toString())
+  res.cookie("calcesSSID",req.user._id.toString())
   res.redirect('/d')
 })
 
@@ -176,7 +178,7 @@ app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' }
 
 //facebook callback route
 app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/' }), (req, res) => {
-  res.cookie("user",req.user._id.toString())
+  res.cookie("calcesSSID",req.user._id.toString())
   res.redirect('/d')
 })
 
