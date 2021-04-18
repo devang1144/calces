@@ -27,7 +27,7 @@ class NavbarDash extends Component {
     handlelogout= async() =>{
         await axios.get(base + '/logout');
         await Cookies.remove("user");
-        if (Cookies.get('user') === undefined) return <Redirect to="/" />
+        if (Cookies.get('calcesSSID') === undefined) return <Redirect to="/" />
     }
 
     triggerUserUtils = () => {
@@ -37,7 +37,8 @@ class NavbarDash extends Component {
     userUtilRef = React.createRef()
     
     render() {
-        const name = this.props.user.data.name
+        const name = this.props.user.data === undefined ? null : this.props.user.data.name
+        console.log(this.props.user)
         return (
             <div style={{width:"100%"}}>
                 <nav className="navbar navbar-expand-md">
@@ -47,7 +48,7 @@ class NavbarDash extends Component {
                             {this.state.showUtils && <div ref={this.userUtilRef} className="user-utils">
                                 <ul className="user-utils-ul">
                                     <Link to="/"><li>View saved analysis</li></Link>
-                                    <Link to="/"><li>Ask query</li></Link>
+                                    <Link to="/ask-a-query"><li>Ask a query</li></Link>
                                     <Link to="/faq"><li>FAQ</li></Link>
                                     <li onClick={this.handlelogout}>logout</li>
                                 </ul>

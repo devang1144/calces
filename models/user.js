@@ -65,7 +65,7 @@ const user = new mongoose.Schema({
                 id:String
             }
         ],
-    docs : [docs]
+    docs : [docs],
 
 })
 

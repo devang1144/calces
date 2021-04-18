@@ -1,0 +1,45 @@
+.add-query-container {
+    width: 55%;
+    margin: 0 auto;
+}
+.editor-class {
+    border: 2px solid rgb(209, 209, 209);
+}
+
+.blog-editor-content-save-button {
+    border: none;
+    width: 130px;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    color: white;
+    background-color: rgb(53, 181, 219);
+}
+
+.add-title {
+    margin: 1.4rem auto;
+    width: 100%;
+    padding: 0.7rem;
+    font-family: 'Roboto';
+    font-size: 28px;
+    border: 1px solid rgb(219, 219, 219);
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        color: rgb(201, 201, 201);
+    }
+}
+
+@media (max-width:750px) {
+    .add-query-container {
+        width: 75%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:550px) {
+    .add-query-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+}

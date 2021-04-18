@@ -9,10 +9,10 @@ router.post('/', async(req,res)=>{
     const slug = slugify(title,{lower:true});
 
     const newquery = new Query({
-        author:req.body.userid,
+        ID:req.body.ID,
         content:req.body.content,
         date:req.body.date,
-        authorname:req.body.authorname,
+        author:req.body.author,
         title:req.body.title,
         slug: slug
     })

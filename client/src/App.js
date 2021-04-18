@@ -17,6 +17,7 @@ import Analysis from './components/Analysis'
 
 import axios from './axios-cls'
 import { UsbOutlined } from '@material-ui/icons';
+import Query from './components/Query';
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
 useEffect(async() => {
   ReactGA.initialize(process.env.REACT_APP_TRACKING_ID)
   ReactGA.pageview(window.location.pathname + window.location.search)
-  const uid = Cookie.get('user') === undefined ? "" : Cookie.get('user')
+  const uid = Cookie.get('calcesSSID') === undefined ? "" : Cookie.get('calcesSSID')
   const user = await axios.get(`/user/${uid}`)
   setUser(user)
 
@@ -43,6 +44,7 @@ useEffect(async() => {
             <Route path="/faq" exact component={Faq} />
             <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />
             <Route path="/analysis/saved" exact component={Analysis} />
+            <Route user={user} path="/ask-a-query" render={(props) => <Query user={user} {...props} />}/>
         </Switch>
       </Router>
     </div>
