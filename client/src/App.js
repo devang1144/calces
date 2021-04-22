@@ -18,6 +18,8 @@ import Analysis from './components/Analysis'
 import axios from './axios-cls'
 import { UsbOutlined } from '@material-ui/icons';
 import Query from './components/Query';
+import AllQuery from './containers/AllQuery';
+import EachQuery from './components/EachQuery';
 
 
 function App() {
@@ -45,6 +47,8 @@ useEffect(async() => {
             <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />
             <Route path="/analysis/saved" exact component={Analysis} />
             <Route user={user} path="/ask-a-query" render={(props) => <Query user={user} {...props} />}/>
+            <Route path="/all-query" component={AllQuery}/>
+            <Route path="/query/:slug" render={props => <EachQuery {...props} key={props.location.key} />}/>
         </Switch>
       </Router>
     </div>

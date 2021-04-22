@@ -45,6 +45,7 @@ class NavbarDash extends Component {
                     <div className="collapse navbar-collapse" id="nav__links">
                         <div className="ml-auto navbar-nav" style={{backgroundColor:"", justifyContent:"end", marginLeft:"0"}}>
                             <span className="p-2" onClick={this.triggerUserUtils}>{name}</span>
+                            <Link style={{textDecoration:"none"}} to="all-query" className="p-2"><span>Search queries</span></Link>
                             {this.state.showUtils && <div ref={this.userUtilRef} className="user-utils">
                                 <ul className="user-utils-ul">
                                     <Link to="/"><li>View saved analysis</li></Link>
