@@ -74,7 +74,7 @@ class Faq extends Component {
 
         const el = this.state.loadingFaq === true ? <Loading/> :
         <div className="container-fluid faq-container p-0">
-            <Navbar />
+            <Navbar user={this.props.user} />
             <div className="f-b" >
             <h3>FAQs</h3>
             <img src={FBI} className="f-b-i" alt=""/>

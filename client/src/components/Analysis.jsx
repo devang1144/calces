@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import axios, {base} from '../axios-cls'
-import Loading from './loading'
+import Loading from './loading';
+import Navbar from './Navbar';
 
 class Analysis extends Component {
 
@@ -20,6 +21,7 @@ class Analysis extends Component {
         const a = this.state.savedAnalysis === undefined ? null : this.state.savedAnalysis
         const el = this.state.loading === true ? <Loading/> : 
         <div className="container">
+            
             <div className="row m-0 s-r">
                 {<div className="col-md-3 saved-analysis-card">
                     <div className="position-relative s-wrapper">
@@ -40,6 +42,7 @@ class Analysis extends Component {
         </div>
         return (
             <div className="main-container container-fluid p-0">
+                <Navbar user={this.props.user} />
                 {el}
             </div>
             )

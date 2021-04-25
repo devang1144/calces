@@ -8,15 +8,38 @@ import Logo from "../assets/logo.svg";
 
 const Navbar = props => {
     const history = useHistory();
+    const [showUtils,setshowUtils] = useState(false);
+
+    useEffect(()=>{
+        document.addEventListener('click', handleClickOutside, true);
+    });
+
+   
+    const handleClickOutside = e => {
+        if ( userUtilRef.current && !userUtilRef.current.contains(e.target) ) {
+            setshowUtils( false );
+        }
+    }
 
 
     const handlelogout= async() =>{
         await axios.get(base + '/logout');
-        await Cookies.remove("user");
+        await Cookies.remove("calcesSSID");
         history.push('/');
     }
-    
+    const triggerUserUtils = () => {
+        setshowUtils( !showUtils );
+    }
 
+    const userUtilRef = React.createRef();
+    var name='';
+
+    if(props.user!=undefined){
+       var name = props.user.data === undefined ? null : props.user.data.name 
+    }
+    
+  
+    
     
         return (
             <div style={{width:"100%"}}>
@@ -27,11 +50,19 @@ const Navbar = props => {
                     
                     <div className="collapse navbar-collapse" id="nav__links">
                         <div className="ml-auto navbar-nav" style={{backgroundColor:"", justifyContent:"end", marginLeft:"0"}}>
-                            <span className="p-2">Product</span>
                             <span className="p-2">contact</span>
-                            {/* <span className="p-2">pricing</span> */}
-                            {!Cookies.get('user') && <a href="#signup" style={{textDecoration:"none", paddingTop:"0.5rem"}}><span className="p-2">Signup</span></a>}    
-                            {Cookies.get('user') && <span className="ml-0 p-2" onClick={handlelogout}>Logout</span>}
+                            {!Cookies.get('calcesSSID') && <a href="#signup" style={{textDecoration:"none", paddingTop:"0.5rem"}}><span className="p-2">Signup</span></a>}    
+                            {Cookies.get('calcesSSID') && <span className="p-2" onClick={triggerUserUtils}>{name}</span>}
+                            
+                            <Link style={{textDecoration:"none"}} to="all-query" className="p-2"><span>Search queries</span></Link>
+                            {showUtils && <div ref={userUtilRef} className="user-utils">
+                                <ul className="user-utils-ul">
+                                    <Link to="/"><li>View saved analysis</li></Link>
+                                    <Link to="/ask-a-query"><li>Ask a query</li></Link>
+                                    <Link to="/faq"><li>FAQ</li></Link>
+                                    <li onClick={handlelogout}>logout</li>
+                                </ul>
+                            </div>  } 
                         </div>
                         
                     </div>

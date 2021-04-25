@@ -184,13 +184,6 @@ app.get('/facebook/callback', passport.authenticate('facebook', {failureRedirect
 
 
 
-app.get('/blog/:slug', async(req, res) => {
-  const thisBlog = await Blog.findOne({slug : req.params.slug})
-  // console.log(thisBlog)
-
-  res.send(thisBlog)
-})
-
 app.use(express.static('client/build'))
 
 app.get('*', (req,res) =>{

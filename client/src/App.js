@@ -43,9 +43,9 @@ useEffect(async() => {
             <Route exact path="/" component={Home} />
             <Route user={user} path="/d" render={(props) => <Dash user={user} {...props} />} />
             <Route path="/admin" component={Admin} />
-            <Route path="/faq" exact component={Faq} />
-            <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} key={props.location.key} />} />
-            <Route path="/analysis/saved" exact component={Analysis} />
+            <Route path="/faq" exact render={(props) => <Faq user={user} {...props} />} />
+            <Route path="/faq/:slug" render={(props) => <EachFaq  {...props} user={user} key={props.location.key} />} />
+            <Route path="/analysis/saved" exact render={(props) => <Analysis user={user} {...props} />} />
             <Route user={user} path="/ask-a-query" render={(props) => <Query user={user} {...props} />}/>
             <Route path="/all-query" component={AllQuery}/>
             <Route path="/query/:slug" render={props => <EachQuery {...props} key={props.location.key} />}/>
