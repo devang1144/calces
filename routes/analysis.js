@@ -38,5 +38,9 @@ router.post('/save/:id', async(req, res) => {
     res.send(thisAnalysis)
 
 })
+router.get('/saved/:id' , async(req,res)=>{
+    const analysis = await User.findById({_id : req.params.id });
+    res.send(analysis.savedAnalysis);
+})
 
 module.exports = router

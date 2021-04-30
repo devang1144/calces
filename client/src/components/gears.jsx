@@ -7,6 +7,7 @@ import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } f
 import axios, {base} from '../axios-cls'
 import Chart from './Chart'
 import { motion } from 'framer-motion';
+import Cookies from 'js-cookie';
 
 import GFuncs from '../containers/gearFunctions'
 class Gears extends GFuncs {
@@ -101,7 +102,7 @@ class Gears extends GFuncs {
 
     saveAnalysis = async() => {
         const payload = {...this.state.data}
-        const {data : res} = await axios.post('/analysis/save/606b335cd229cc49f81a0196', payload)
+        const {data : res} = await axios.post(`/analysis/save/${Cookies.get("calcesSSID")}`, payload)
         this.setState({ analysisSaved : true })
     }
     topRef = React.createRef()

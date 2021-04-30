@@ -96,9 +96,6 @@
             color: white;
         }
     }
-    .h-3-s-2 {
-
-    } 
 } 
 
 .h-4-heading {
@@ -109,7 +106,6 @@
 .a-temp-home {
     height: 100vh;
     margin-bottom: 3rem;
-    border-bottom: 1px solid rgb(228, 228, 228);
 }
 
 .a-temp-list {
@@ -127,6 +123,8 @@
 
 
 .btn-a-temp {
+    margin-top:1rem !important;
+    margin-left: 1rem !important;
     border: none;
     box-shadow: rgba(#000000, 0.25) 0px 5px 10px 0px  !important;
     // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -158,9 +156,326 @@
         .l-b {
             background-color: #101D3A;
             color: white;
-            font-family: 'Roboto';
+            font-family: $font-2;
         }
     }
 
     margin-bottom: 3rem;
+}
+._background_analysis_temp{
+    background: #001015;
+    height:80vh;
+}
+@media (max-width:769px){
+    .h-1 {
+        margin-bottom: 3rem !important;
+        .h-s-1 {
+            h1 {
+                font-size: 20px;
+                margin-bottom: 0;
+            }
+            h3 {
+                font-size: 13px;
+                margin: 1.3rem auto;
+            }
+            .h-1-b {
+                width: 90px;
+                padding: 0.3rem;
+                font-size:0.7rem;
+
+            }
+    
+        }
+    }
+    
+    .h-2 {
+        margin: 4rem auto;
+        .h-2-s {
+            h2 {
+                font-family: $font-6;
+                font-size: 23px;
+                font-weight: 600;
+            }
+            h3 {
+                font-size: 13px;
+                margin-bottom: 1.4rem;
+            }
+            h4 {
+                font-family: 'Spartan';
+                font-size: 11px;
+                font-weight: 600;
+            }
+            .h-2-b {
+                width: 100px;
+                padding: 0.3rem;
+                font-size:0.7rem;
+            }
+        }
+    }
+    
+    .h-3 {
+        background-color: #00141B;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        margin: 5rem auto;
+        .h-3-s-1 {
+            
+            h3 {
+                margin-top: 2rem;
+                font-family: $font-6;
+                font-size: 20px;
+                color: #fff;
+            }
+            h4 {
+                margin-top: 0.8rem;
+                color: #fff;
+                font-size: 12px;
+                font-family: 'Spartan';
+            }
+            button {
+                margin-top: 1.2rem;
+                width: 100px;
+                font-size:0.7rem;
+            }
+        }
+    } 
+    
+    .h-4-heading {
+        font-family: $font-6;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    
+    .login-buttons {
+        a {
+            .l-b {
+                font-size: 0.8em !important;
+            }
+        }
+        margin-bottom: 3rem;
+    }
+    .analysis-container_temp{
+        display: none;
+    }
+}
+.h-3-s-2{
+    display: flex;
+    justify-content:center;
+}
+@media (max-width:569px){
+    .h-1 {
+        padding-left: 2rem;
+        padding-top: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 3rem !important;
+        .h-s-1 {
+            h1 {
+                font-size: 15px;
+                margin-bottom: 0;
+            }
+            h3 {
+                font-size: 11px;
+                margin: 1.3rem auto;
+            }
+            .h-1-b {
+                width: 60px;
+                padding: 0.3rem;
+                font-size:0.5rem;
+                border: 1px solid #d5d5d5;
+            }
+            
+    
+        }
+    }
+    
+    .h-2 {
+        margin: 4rem auto;
+        padding: 0rem 0rem 0rem 2rem;
+        .h-2-s {
+            h2 {
+                font-family: $font-6;
+                font-size: 18px;
+                font-weight: 600;
+            }
+            h3 {
+                font-size: 11px;
+                margin-bottom: 1.4rem;
+            }
+            h4 {
+                font-family: 'Spartan';
+                font-size: 10px;
+                font-weight: 600;
+            }
+            
+            .h-2-b {
+                width: 70px;
+                padding: 0.3rem;
+                font-size:0.6rem;
+            }
+        }
+    }
+    
+    .h-3 {
+        background-color: #00141B;
+        padding: 2rem 2rem 2rem 2rem;
+        margin: 5rem auto;
+        .h-3-s-1 {
+            
+            h3 {
+                margin-top: 2rem;
+                font-family: $font-6;
+                font-size: 15px;
+                color: #fff;
+            }
+            h4 {
+                margin-top: 0.8rem;
+                color: #fff;
+                font-size: 10px;
+                font-family: 'Spartan';
+            }
+            button {
+                margin-top: 1.2rem;
+                width: 70px;
+                font-size:0.6rem;
+                border: 1px solid #d5d5d5;
+            }
+        }
+    } 
+    
+    .h-4-heading {
+        font-family: $font-6;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    
+    
+    .login-buttons {
+        a {
+            .l-b {
+                font-size: 0.7em !important;
+            }
+        }
+        margin-bottom: 3rem;
+    }
+    .analysis-container_temp{
+        display: none;
+    }
+    .h-1-i{
+        width: 70% !important;
+    }
+    .h-2-i{
+        width: 80% !important;
+    }
+    .h-3-i{
+        width: 50% !important;
+        padding-top: 1rem;
+    }
+}
+@media (max-width:450px){
+    .h-1 {
+        padding-left: 2rem;
+        padding-top: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 3rem !important;
+        .h-s-1 {
+            h1 {
+                font-size: 13px;
+                margin-bottom: 0;
+            }
+            h3 {
+                font-size: 10px;
+                margin: 1.3rem auto;
+            }
+            .h-1-b {
+                width: 50px;
+                padding: 0.3rem;
+                font-size:0.4rem;
+                border: 1px solid #d5d5d5;
+            }
+            
+    
+        }
+    }
+    
+    .h-2 {
+        margin: 4rem auto;
+        padding: 0rem 0rem 0rem 2rem;
+        .h-2-s {
+            h2 {
+                font-family: $font-6;
+                font-size: 15px;
+                font-weight: 600;
+            }
+            h3 {
+                font-size: 10px;
+                margin-bottom: 1.4rem;
+            }
+            h4 {
+                font-family: 'Spartan';
+                font-size: 9px;
+                font-weight: 600;
+            }
+            
+            .h-2-b {
+                width: 60px;
+                padding: 0.3rem;
+                font-size:0.5rem;
+            }
+        }
+    }
+    
+    .h-3 {
+        background-color: #00141B;
+        padding: 2rem 2rem 2rem 2rem;
+        margin: 5rem auto;
+        .h-3-s-1 {
+            
+            h3 {
+                margin-top: 2rem;
+                font-family: $font-6;
+                font-size: 13px;
+            }
+            h4 {
+                margin-top: 0.8rem;
+                font-size: 10px;
+                font-family: 'Spartan';
+            }
+            button {
+                margin-top: 1.2rem;
+                width: 60px;
+                font-size:0.5rem;
+                border: 1px solid #d5d5d5;
+            }
+        }
+    } 
+    
+    .h-4-heading {
+        font-family: $font-6;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    
+    
+    .login-buttons {
+        a {
+            .l-b {
+                font-size: 0.7em !important;
+            }
+        }
+        margin-bottom: 3rem;
+    }
+    .analysis-container_temp{
+        display: none;
+    }
+    .h-1-i{
+        width: 70% !important;
+    }
+    .h-2-i{
+        width: 80% !important;
+    }
+    .h-3-i{
+        width: 50% !important;
+        padding-top: 1rem;
+    }
 }

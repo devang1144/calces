@@ -5,6 +5,7 @@ import Gears from '../components/gears';
 import Shaft from '../components/Shafts';
 import Docs from '../components/Docs';
 import NavbarDash from '../components/NavbarDash';
+import Footer from '../components/Footer';
 import sicon from '../assets/shaft.svg';
 import logo from '../assets/logo.svg';
 
@@ -88,6 +89,10 @@ class Dash extends Component {
                     <NavbarDash user={this.props.user}/>
                     {page === "Gears" ? <Gears/> : page === "shaft" ? <Shaft/> : page === "Docs" ? <Docs user={this.props.user}/> : null}
                 </div>
+                {/* <div className="container-fluid" style={{"zIndex":"1000000"}}>
+                    <Footer />
+                </div>
+                 */}
             </div>
         );
     }

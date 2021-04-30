@@ -1,0 +1,38 @@
+.footer-wrapper{
+   background-color: #00141B;
+   min-height: 20vh;
+   display:flex;
+   padding-bottom: 1rem;
+
+   .footer-logo-wrapper{
+       padding-left: 1.2rem;
+       display: flex;
+       justify-content: center;
+       img{
+           width: 70%;
+       }
+   }
+
+    .footer-links-wrapper{
+        padding-left: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        .footer-links{
+            margin-top:0.5rem;
+            font-size:1rem;
+            text-align:center;
+            font-family: $font-6;
+            color: #d5d5d5;
+            font-weight: 400;
+        }
+        a{
+            &:hover{
+                text-decoration:none;
+            }
+        }
+    }
+
+ 
+}

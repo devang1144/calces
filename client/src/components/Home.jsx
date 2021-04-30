@@ -4,6 +4,7 @@ import { base } from '../base';
 import {Link, Redirect} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
+import Footer from './Footer';
 import Navbar from './Navbar'
 import homeImg from '../assets/home-top-img.svg'
 import homeImg2 from '../assets/home-img-2.svg'
@@ -48,15 +49,19 @@ class Home extends Component {
                         <button>Learn more</button>
                     </div>
                     <div className="col-md-4 h-3-s-2">
-                        <img src={homeImg3} className="img img-fluid" alt=""/>
+                        <img src={homeImg3} className="img img-fluid h-3-i" alt=""/>
                     </div>
                 </div>
+                <div className="analysis-container_temp">
                     <h3 className="text-center h-4-heading">A comfortable interface for your needs</h3>
                     <AnalysisTemp/>
+                </div>
+                    
                     <div className="login-buttons d-flex justify-content-center align-items-center" id="signup">
                         <a href={base + 'google/login'} ><Button variant="contained"  className="mt-5 l-b" >Countinue with Google</Button></a>
                         <a href={base + 'facebook/login'}><Button variant="contained" className="ml-5 mt-5 l-b" >Countinue with Facebook</Button></a>
                     </div>
+                    <Footer />
             </div>
             
         );

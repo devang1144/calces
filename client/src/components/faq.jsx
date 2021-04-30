@@ -7,6 +7,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 import faqBanner from '../assets/faq-banner.png'
 import faqBannerImg from '../assets/faq-banner-img.png'
@@ -126,6 +127,7 @@ class Faq extends Component {
                 >
                 </AccordionSummary>
             </Accordion>}
+            <Footer />
         </div>
 
         return (el)

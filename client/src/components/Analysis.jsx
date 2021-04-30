@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import axios, {base} from '../axios-cls'
+import {Link} from 'react-router-dom';
+import axios, {base} from '../axios-cls';
 import Loading from './loading';
 import Navbar from './Navbar';
+import Footer from './Footer';
+import Cookies from 'js-cookie';
 
 class Analysis extends Component {
 
@@ -12,15 +14,17 @@ class Analysis extends Component {
     }
 
     componentDidMount = async() => {
-        const { data : savedAnalysis } = await axios.get('/analysis/saved')
+        const { data : savedAnalysis } = await axios.get(`/analysis/saved/${Cookies.get("calcesSSID")}`)
+        console.log(savedAnalysis);
         this.setState({ savedAnalysis, loading:false })
+        
     }
     
 
     render() {
         const a = this.state.savedAnalysis === undefined ? null : this.state.savedAnalysis
         const el = this.state.loading === true ? <Loading/> : 
-        <div className="container">
+        <div className="container" style ={{"minHeight":"80vh"}}>
             
             <div className="row m-0 s-r">
                 {<div className="col-md-3 saved-analysis-card">
@@ -44,6 +48,7 @@ class Analysis extends Component {
             <div className="main-container container-fluid p-0">
                 <Navbar user={this.props.user} />
                 {el}
+                <Footer />
             </div>
             )
     }

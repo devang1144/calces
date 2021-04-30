@@ -22,7 +22,7 @@ class AnalysisTemp extends Component {
                 </div>
                 <div className="row m-0 w-100">
                     <div className="col-md-2">
-                        <Button style={{ backgroundColor:"#204956", color:"white" }} className="m-4 btn-a-temp">Create project +</Button>
+                        <Button style={{ backgroundColor:"#204956", color:"white" }} className="btn-a-temp">Create project +</Button>
                         <hr/>
                         <ul className="a-temp-list">
                             <li>Gears</li>
@@ -31,7 +31,7 @@ class AnalysisTemp extends Component {
                         </ul>
                         <hr/>
                     </div>
-                    <div className="col-md-10 " style={{ backgroundColor:"#001015", height:"94vh" }}>
+                    <div className="col-md-10 _background_analysis_temp">
                         <div className="row m-0 d-flex justify-content-start">
                         <div className="col-md-3">
                             <FileCard material="steel" grade="1" fosb="1.43" fosc="1.67"/>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import axios from '../axios-cls'
 import Loading from '../components/loading'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class AllQuery extends Component {
 
@@ -22,6 +24,7 @@ class AllQuery extends Component {
         const allquery = this.state.loading === true ? 
         <Loading/> : 
         <div className="row m-0">
+            <Navbar />
             <div className="col-md-2 a-q-s-m">
                 <ul>
                     <li><Link to="/d">Dashboard</Link></li>
@@ -55,6 +58,7 @@ class AllQuery extends Component {
                 )}
             </ul>
         </div>
+        <Footer />
         </div>
         return (allquery);
     }
