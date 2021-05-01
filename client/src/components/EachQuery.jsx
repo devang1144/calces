@@ -13,7 +13,6 @@ class EachQuery extends Component {
         const { match : { params } } = this.props
         const { data : query } = await axios.get(`/query/eachquery/${params.slug}`)
         this.setState({ query, loading:false })
-        console.log(query)
     }
     
 
