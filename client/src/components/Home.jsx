@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import { base } from '../base';
+import axios, {base} from '../axios-cls';
 import {Link, Redirect} from 'react-router-dom';
 import Cookies from 'js-cookie';
 

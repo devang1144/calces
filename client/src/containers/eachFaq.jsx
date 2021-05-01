@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios, {base} from '../axios-cls'
+import axios, {base} from '../axios-cls';
 import { Link } from 'react-router-dom'
 
 class EachFaq extends Component {

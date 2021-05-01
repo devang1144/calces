@@ -12,8 +12,7 @@ import logo from '../assets/logo.svg';
 import { motion } from 'framer-motion';
 
 import {Link} from 'react-router-dom';
-import axios from 'axios';
-import { base } from '../base';
+import axios, {base} from '../axios-cls';
 
 // import Curve from '../sae/Curve'
 class Dash extends Component {
