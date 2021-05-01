@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5045fe15.chunk.css",
+    "main.js": "/static/js/main.e5290dc8.chunk.js",
+    "main.js.map": "/static/js/main.e5290dc8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4215b026.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4215b026.js.map",
+    "static/css/2.7e357cd2.chunk.css": "/static/css/2.7e357cd2.chunk.css",
+    "static/js/2.43fced36.chunk.js": "/static/js/2.43fced36.chunk.js",
+    "static/js/2.43fced36.chunk.js.map": "/static/js/2.43fced36.chunk.js.map",
+    "static/js/3.7515f066.chunk.js": "/static/js/3.7515f066.chunk.js",
+    "static/js/3.7515f066.chunk.js.map": "/static/js/3.7515f066.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.7e357cd2.chunk.css.map": "/static/css/2.7e357cd2.chunk.css.map",
+    "static/css/main.5045fe15.chunk.css.map": "/static/css/main.5045fe15.chunk.css.map",
+    "static/js/2.43fced36.chunk.js.LICENSE.txt": "/static/js/2.43fced36.chunk.js.LICENSE.txt",
+    "static/media/f-b-i.a580d517.svg": "/static/media/f-b-i.a580d517.svg",
+    "static/media/faq-banner.b199ee25.png": "/static/media/faq-banner.b199ee25.png",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/home-img-2.ec31d0a2.svg": "/static/media/home-img-2.ec31d0a2.svg",
+    "static/media/home-img-3.85e050b8.svg": "/static/media/home-img-3.85e050b8.svg",
+    "static/media/home-top-img.3c21254a.svg": "/static/media/home-top-img.3c21254a.svg",
+    "static/media/logo.ed276773.svg": "/static/media/logo.ed276773.svg",
+    "static/media/shaft-banner.afd8feee.svg": "/static/media/shaft-banner.afd8feee.svg",
+    "static/media/shaft.00839dda.svg": "/static/media/shaft.00839dda.svg",
+    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4215b026.js",
+    "static/css/2.7e357cd2.chunk.css",
+    "static/js/2.43fced36.chunk.js",
+    "static/css/main.5045fe15.chunk.css",
+    "static/js/main.e5290dc8.chunk.js"
+  ]
+}
