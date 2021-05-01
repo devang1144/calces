@@ -10,7 +10,7 @@ const passport = require('passport');
 
 const sanitize = require('mongo-sanitize');
 
-const base = "http://calces.org.in/"
+const base = "https://calces.org.in/"
 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
